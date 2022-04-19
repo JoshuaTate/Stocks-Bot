@@ -1,4 +1,4 @@
-# Pushes to github. Because I'm lazy!
+# Pushes to github. Because I'm lazy! Requires bash to be installed.
 
 cd "C:\Users\jjtat\Projects\Stocks bot"
 git init
