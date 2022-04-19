@@ -1,18 +1,24 @@
+# You'll likely need to run "python -m pip install (module)" for yfinance, plotly, praw, psaw, matplotlib, scipy if you've not used them before
 import yfinance as yf
 import pandas as pd
 import numpy as np
-import plotly.graph_objs as go
-import praw
-from psaw import PushshiftAPI
 import datetime
-from scipy.optimize import curve_fit
-import matplotlib.pyplot as plt
 import math
 import csv
 import random
 import time
 import winsound
 import stocks_lists as s
+# The below are not currently in use and were used for two additional projects; one being to plot out the stock details in an intuitive way,
+# the other aiming to download comments from various stock-market based subreddits to analyse how much a particular stock was mentioned to provide a crude estimate as to its volatility
+# Their scripts are in the "archived" folder, but have not been touched since this project was undertaken in February 2021. Only this main script has been touched up as part of a github demonstration.
+'''
+import plotly.graph_objs as go
+import praw
+from psaw import PushshiftAPI
+from scipy.optimize import curve_fit
+import matplotlib.pyplot as plt
+'''
 
 def getStockData(stock,prdString,intvlString):
     data = yf.download(tickers=stock,period=prdString,interval=intvlString)
@@ -42,6 +48,7 @@ def getStockIntervalTimeTick(data):
     return(uniqueDates,count)
 
 def normalisedDailyDistribution(dailyData,intvlData,uniqueDates,count,stat='Open'):
+    # Transforms stock data over the course of the day from the raw value into deviations from the daily "stat", which can be specified
     sd = dailyData[stat].tolist()
     si = intvlData[stat].tolist()
     sd = [float(i) for i in sd]
@@ -550,5 +557,5 @@ if(__name__=="__main__"):
     portfolio = loadPortfolio()
     # Run one of the below functions - first runs in real time, bottom provides a simulation of the stocks guesswork using past stocks
     #liveStockBot(stocks,freq=900,analysisPeriod="5d",interval="1m",backdatePeriod="300d",stat='Close')
-    runSim(stocks,len(stocks),portfolio,1,3,3)
+    runSim(allStocks=stocks,numSim=10,portfolio=portfolio,numRuns=10,buyScore=3,sellScore=3)
     
