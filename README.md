@@ -1,4 +1,9 @@
 # Stocks-Bot
+
+*Type of project:* Experimental, self-learning
+
+*State of completion:* Complete, but may be remade into a "Stock Simulator" app
+
 A Python program that provides analysis of stocks to attempt to exploit their daily volatility to make large, short term returns.
 
 After the Gamestop stock short debacle, I became interested in the stock market; particularly in how the volatility of some stocks meant one could double their money daily if they were able to predict when a sharp change in a stock might occur, and buy and sell at the right times. I wrote a Python program that used a parameterised statistical model to estimate when a stock was at its lowest or highest point, and indicate to buy or sell at that point. I trained it on past stock data obtained through the Yahoo Finance API, and after getting promising results I modified it to run on real-time data, and gave it the ability to "buy" and "sell" fake stocks and let it run over a two week period with a £1,000 initial investment. Unfortunately the Texas power crisis occurred in that two week period and the bot took crushing losses on the many energy stocks it was holding. I lost faith that the stock market was a reliable way to make income after that.
